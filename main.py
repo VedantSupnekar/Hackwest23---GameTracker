@@ -50,6 +50,8 @@ def handle_discord():
     print(request.data)
     req_data = json.loads(request.data.decode('utf-8'))
     slash_command = req_data["data"]["name"]
+    print(slash_command)
+    
     if slash_command == "stratroulette":
         return get_random_strat()
     if slash_command == "agent":
