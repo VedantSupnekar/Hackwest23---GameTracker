@@ -68,7 +68,7 @@ def handle_discord():
     req_data = json.loads(request.data.decode('utf-8'))
     print(req_data)
     slash_command = req_data["data"]["name"]
-    opt = req_data["data"]["options"]["value"]
+    opt = req_data["data"]["options"][0]["value"]
     print(slash_command)
     
     if slash_command == "stratroulette":
