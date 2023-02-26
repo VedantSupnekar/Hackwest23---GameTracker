@@ -24,6 +24,19 @@ def get_random_agent():
     connection.close()
     return result['Agents']
 
+@app.route('/maptips', methods=['POST'])
+def get_MapTips(key):
+    hashmap_MapTips = {}
+    mycursor = connection.cursor()
+    mycursor.execute('SELECT * FROM MapTips')
+    result = mycursor.fetchall()
+    #print(result[0]['Tips'])
+    hashmap2 = {0: 'Ascent', 1: 'Bind', 2: 'Breeze', 3: 'Fracture', 4: 'Haven', 5: 'Icebox', 6: 'Lotus', 7: 'Pearl', 8: 'Split'}
+  
+    for i in result:
+        hashmap_MapTips[hashmap2[i['Idx']]] = i['Tips']
+    return(hashmap_MapTips[key])
+
 @app.route('/discord', methods=['POST','GET'])
 def handle_discord():
     PUBLIC_KEY = '3b3970fa9b15faaabab551ad3a1c947123a72ee8b8f7dea2e2edb7f95458e443'
@@ -64,6 +77,14 @@ def handle_discord():
         'type': 4,
         'data': {
             'content': get_random_agent()
+        }
+    }
+    
+    if slash_command == "maptips":
+        return {
+        'type': 4,
+        'data': {
+            'content': get_map_tips()
         }
     }
     else:
