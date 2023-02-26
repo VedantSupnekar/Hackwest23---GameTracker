@@ -27,7 +27,7 @@ def get_random_agent():
 
 @app.route('/maptips', methods=['POST'])
 def get_map_tips(): #ChatGPT
-   print("hello")
+   return("hello")
 
 '''
 @app.route('/maptips', methods=['POST'])
