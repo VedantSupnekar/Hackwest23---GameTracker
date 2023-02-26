@@ -71,7 +71,7 @@ def handle_discord():
     slash_command = req_data["data"]["name"]
     
     #extract map_breeze from data
-    givenmap = req_data['data']['options'][0]['value']
+    
     print(slash_command)
     
     if slash_command == "stratroulette":
@@ -90,6 +90,7 @@ def handle_discord():
     }
     
     if slash_command == "maptips":
+        givenmap = req_data['data']['options'][0]['value']
         return {
         'type': 4,
         'data': {
