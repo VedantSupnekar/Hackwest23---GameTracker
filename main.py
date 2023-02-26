@@ -47,7 +47,7 @@ def handle_discord():
             "type": 1
         })
 
-    #print(request.data)
+    print(request.data)
     req_data = request.data.decode('utf-8')
     req_data = ast.literal_eval(req_data)
     slash_command = req_data["data"]["name"]
