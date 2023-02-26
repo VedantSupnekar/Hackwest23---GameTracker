@@ -30,6 +30,8 @@ def get_map_tips(): #ChatGPT
     map_option = request.json['data'][0]['options'][0]['value']
     map_name = map_option.replace('map_', '')
     
+    print(map_option)
+    
     connection = get_connection()
     mycursor = connection.cursor()
     sql = 'SELECT Tips FROM MapTips WHERE MapName = %s'
@@ -39,11 +41,12 @@ def get_map_tips(): #ChatGPT
     connection.close()
 
     if result is not None:
-        return result['Tips']
+        #return result['Tips']
+        return "Kind of successful"
     else:
         return f"No tips found for {map_name}."
 
-
+'''
 @app.route('/maptips', methods=['POST'])
 def get_MapTips(key): #Suchith
     hashmap_MapTips = {}
@@ -55,7 +58,7 @@ def get_MapTips(key): #Suchith
   
     for i in result:
         hashmap_MapTips[hashmap2[i['Idx']]] = i['Tips']
-    return(hashmap_MapTips[key])
+    return(hashmap_MapTips[key])'''
 
 @app.route('/discord', methods=['POST','GET'])
 def handle_discord():
