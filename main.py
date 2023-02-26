@@ -35,8 +35,8 @@ def get_agentTips(key):
     #print(result[0]['Tips'])
     hashmap1 = {0:'astra', 1:'breach', 2:'brimstone', 3:'chamber', 4:'cypher', 5:'jett', 6:'KAY/O', 7:'killjoy', 8:'neon', 9:'omen', 10:'phoenix', 11:'raze', 12:'reyna', 13:'sage', 14:'skye', 15:'sova', 16:'viper', 17:'yoru', 18:'harbour', 19:'fade'}
 
-    for i in result:
-        hashmap[hashmap1[i['Idx']]] = i['Tips']
+    '''for i in result:
+        hashmap[hashmap1[i['Idx']]] = i['Tips']'''
     print(key)
     return(key)
     #print(hashmap)
