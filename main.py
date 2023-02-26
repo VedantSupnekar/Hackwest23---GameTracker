@@ -90,7 +90,7 @@ def handle_discord():
         return {
         'type': 4,
         'data': {
-            'content': get_map_tips(opt)
+            'content': get_MapTips(opt)
         }
     }
     else:
