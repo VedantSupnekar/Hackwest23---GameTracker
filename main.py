@@ -24,8 +24,28 @@ def get_random_agent():
     connection.close()
     return result['Agents']
 
+
 @app.route('/maptips', methods=['POST'])
-def get_MapTips(key):
+def get_map_tips(): #ChatGPT
+    map_option = request.json['data'][0]['options'][0]['value']
+    map_name = map_option.replace('map_', '')
+    
+    connection = get_connection()
+    mycursor = connection.cursor()
+    sql = 'SELECT Tips FROM MapTips WHERE MapName = %s'
+    val = (map_name,)
+    mycursor.execute(sql, val)
+    result = mycursor.fetchone()
+    connection.close()
+
+    if result is not None:
+        return result['Tips']
+    else:
+        return f"No tips found for {map_name}."
+
+
+@app.route('/maptips', methods=['POST'])
+def get_MapTips(key): #Suchith
     hashmap_MapTips = {}
     mycursor = connection.cursor()
     mycursor.execute('SELECT * FROM MapTips')
