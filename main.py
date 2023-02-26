@@ -46,6 +46,7 @@ def handle_discord():
             "type": 1
         })
 
+    print(request.data)
     #message = request.json['message'] #message sent to bot
     response = f'Strat: {get_random_strat()}\nAgent: {get_random_agent()}'
     return {
