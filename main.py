@@ -49,7 +49,7 @@ def handle_discord():
 
     print(request.data)
     req_data = request.data.decode('utf-8')
-    req_data = ast.literal_eval(req_data)
+    req_data = ast.literal_eval(req_data[2:-1])
     slash_command = req_data["data"]["name"]
     if slash_command == "stratroulette":
         return get_random_strat()
