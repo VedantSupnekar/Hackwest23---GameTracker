@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, abort
 import pymysql
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
+import ast
 
 app = Flask(__name__)
 
@@ -48,7 +49,7 @@ def handle_discord():
 
     #print(request.data)
     req_data = request.data.decode('utf-8')
-    req_data = dict(req_data)
+    req_data = ast.literal_eval(req_data)
     slash_command = req_data["data"]["name"]
     if slash_command == "stratroulette":
         return get_random_strat()
