@@ -25,11 +25,9 @@ def get_random_agent():
     return result['Agents']
 
 
-@app.route('/maptips', methods=['POST'])
-def get_map_tips(): #ChatGPT
-   return("hello")
 
-'''
+
+
 @app.route('/maptips', methods=['POST'])
 def get_MapTips(key): #Suchith
     hashmap_MapTips = {}
@@ -37,11 +35,11 @@ def get_MapTips(key): #Suchith
     mycursor.execute('SELECT * FROM MapTips')
     result = mycursor.fetchall()
     #print(result[0]['Tips'])
-    hashmap2 = {0: 'Ascent', 1: 'Bind', 2: 'Breeze', 3: 'Fracture', 4: 'Haven', 5: 'Icebox', 6: 'Lotus', 7: 'Pearl', 8: 'Split'}
+    hashmap2 = {0: 'map_ascent', 1: 'map_bind', 2: 'map_breeze', 3: 'map_fracture', 4: 'map_haven', 5: 'map_icebox', 6: 'map_lotus', 7: 'map_pearl', 8: 'map_split'}
   
     for i in result:
         hashmap_MapTips[hashmap2[i['Idx']]] = i['Tips']
-    return(hashmap_MapTips[key])'''
+    return(hashmap_MapTips[key])
 
 @app.route('/discord', methods=['POST','GET'])
 def handle_discord():
@@ -70,6 +68,7 @@ def handle_discord():
     req_data = json.loads(request.data.decode('utf-8'))
     print(req_data)
     slash_command = req_data["data"]["name"]
+    opt = req_data["data"]["options"]["value"]
     print(slash_command)
     
     if slash_command == "stratroulette":
@@ -91,7 +90,7 @@ def handle_discord():
         return {
         'type': 4,
         'data': {
-            'content': get_map_tips()
+            'content': get_map_tips(opt)
         }
     }
     else:
