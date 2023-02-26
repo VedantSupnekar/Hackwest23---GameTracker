@@ -53,19 +53,26 @@ def handle_discord():
     print(slash_command)
     
     if slash_command == "stratroulette":
-        return get_random_strat()
-    if slash_command == "agent":
-        return get_random_agent()
-    else:
-        return "Invalid slash command"
-    #message = request.json['message'] #message sent to bot
-    response = f'Strat: {get_random_strat()}\nAgent: {get_random_agent()}'
-    return {
+        return {
         'type': 4,
         'data': {
-            'content': response
+            'content': get_random_strat()
         }
     }
+    if slash_command == "agent":
+        return {
+        'type': 4,
+        'data': {
+            'content': get_random_agent()
+        }
+    }
+    else:
+        return {
+        'type': 4,
+        'data': {
+            'content': "Invalid slash command"
+        }}
+    
 
 def get_connection():
     connection = pymysql.connect(
