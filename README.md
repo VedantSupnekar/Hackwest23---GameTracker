@@ -2,16 +2,16 @@
 
 Introduction:
 
-For those new to valorant it’s a 5v5, first person shooter game where you play as an agent. And it is currently played by over 18M players
+Valorant is a first person shooter game where you play as an agent, with a random map every match. 
+It is currently played by over 18M players around the world
 
-Every agent has their unique abilities 
+Every agent has their unique abilities.
 I believe as of now we have 20 valo agents
-The game picks a random map for your team to play and we have about 9 of them
 I can keep going but I think and hope ive covered enough for the background needed to understand our project. 
 
 Game tracker is a bot on discord which has 5 functionalities as of now and we intend to keep adding more of them.
-We are following an agile development method so each time we add new functionalities/commands we can keep adding them to our bot
-We have deployed this bot on GCP so it is available for use to everyone
+We are following an agile development method so each time we add new functionalities/commands we can keep adding them to our bot.
+We have deployed this bot on the Google Cloud Platform so it is scalable to a large scale
 
 Commands and their uses:
 /agent - Randomly selects an agent to play with.
