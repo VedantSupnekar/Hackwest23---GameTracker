@@ -39,7 +39,7 @@ def get_agentTips(key):
     for i in result:
         hashmap[hashmap1[i['Idx']]] = i['Tips']
     print(key)
-    return(hashmap[key])
+    return(key)
     #print(hashmap)
 
 
@@ -121,7 +121,7 @@ def handle_discord():
         return {
         'type': 4,
         'data': {
-            'content': get_MapTips(givenagent)
+            'content': get_agentTips(givenagent)
         }
     }
     else:
