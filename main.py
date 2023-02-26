@@ -46,7 +46,16 @@ def handle_discord():
             "type": 1
         })
 
-    print(request.data)
+    #print(request.data)
+    req_data = request.data.decode('utf-8')
+    req_data = dict(req_data)
+    slash_command = req_data["data"]["name"]
+    if slash_command == "stratroulette":
+        return get_random_strat()
+    if slash_command == "agent":
+        return get_random_agent()
+    else:
+        return "Invalid slash command"
     #message = request.json['message'] #message sent to bot
     response = f'Strat: {get_random_strat()}\nAgent: {get_random_agent()}'
     return {
