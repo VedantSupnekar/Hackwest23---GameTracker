@@ -25,6 +25,22 @@ def get_random_agent():
     return result['Agents']
 
 
+#AgentTips
+def get_agentTips(key):
+    hashmap = {}
+    connection = get_connection()
+    mycursor = connection.cursor()
+    mycursor.execute('SELECT * FROM AgentTips')
+    result = mycursor.fetchall()
+    #print(result[0]['Tips'])
+    hashmap1 = {0:'jett', 1:'breach', 2:'brimstone', 3:'chamber', 4:'cypher', 5:'jett', 6:'KAY/O', 7:'killjoy', 8:'neon', 9:'omen', 10:'phoenix', 11:'raze', 12:'reyna', 13:'sage', 14:'skye', 15:'sova', 16:'viper', 17:'yoru', 18:'harbour', 19:'fade'}
+
+    for i in result:
+        hashmap[hashmap1[i['Idx']]] = i['Tips']
+    print(hashmap[key])
+    #print(hashmap)
+
+
 
 
 
@@ -95,6 +111,15 @@ def handle_discord():
         'type': 4,
         'data': {
             'content': get_MapTips(givenmap)
+        }
+    }
+    
+    if slash_command == "agent_tips":
+        givenagent = req_data['data']['options'][0]['value']
+        return {
+        'type': 4,
+        'data': {
+            'content': get_MapTips(givenagent)
         }
     }
     else:
