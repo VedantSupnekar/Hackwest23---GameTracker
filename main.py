@@ -30,6 +30,7 @@ def get_random_agent():
 
 @app.route('/maptips', methods=['POST'])
 def get_MapTips(key): #Suchith
+    connection = get_connection()
     hashmap_MapTips = {}
     mycursor = connection.cursor()
     mycursor.execute('SELECT * FROM MapTips')
