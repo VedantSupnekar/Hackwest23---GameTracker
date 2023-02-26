@@ -31,7 +31,8 @@ def handle_discord():
     try:
         signature = request.headers["X-Signature-Ed25519"]
         timestamp = request.headers["X-Signature-Timestamp"]
-    except BadSignatureError:
+    #except BadSignatureError:
+    except KeyError: 
         abort(401, 'invalid request signature')
     body = request.data.decode("utf-8")
     
