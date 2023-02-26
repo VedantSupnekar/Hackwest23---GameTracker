@@ -28,9 +28,11 @@ def handle_discord():
     PUBLIC_KEY = '3b3970fa9b15faaabab551ad3a1c947123a72ee8b8f7dea2e2edb7f95458e443'
 
     verify_key = VerifyKey(bytes.fromhex(PUBLIC_KEY))
-
-    signature = request.headers["X-Signature-Ed25519"]
-    timestamp = request.headers["X-Signature-Timestamp"]
+    try:
+        signature = request.headers["X-Signature-Ed25519"]
+        timestamp = request.headers["X-Signature-Timestamp"]
+    except BadSignatureError:
+        abort(401, 'invalid request signature')
     body = request.data.decode("utf-8")
     
     try:
