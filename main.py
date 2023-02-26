@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, abort
-from google.auth import compute_engine
 import pymysql
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
@@ -54,7 +53,6 @@ def handle_discord():
     }
 
 def get_connection():
-    credentials = compute_engine.Credentials()
     connection = pymysql.connect(
     user = 'hack',
     password = '12345',
