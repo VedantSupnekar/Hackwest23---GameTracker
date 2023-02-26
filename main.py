@@ -38,9 +38,7 @@ def get_agentTips(key):
 
     for i in result:
         hashmap[hashmap1[i['Idx']]] = i['Tips']
-    print(key)
-    return(hashmap['astra'])
-    #print(hashmap)
+    return(hashmap_MapTips[key])
 
 
 @app.route('/maptips', methods=['POST'])
