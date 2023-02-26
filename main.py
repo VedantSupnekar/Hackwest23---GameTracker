@@ -70,8 +70,9 @@ def shootingtips(key):
 
 @app.route('/discord', methods=['POST','GET'])
 def handle_discord():
-    PUBLIC_KEY = '3b3970fa9b15faaabab551ad3a1c947123a72ee8b8f7dea2e2edb7f95458e443'
-
+    PUBLIC_KEY = ''
+    #Please insert own public key here.
+    
     verify_key = VerifyKey(bytes.fromhex(PUBLIC_KEY))
     try:
         signature = request.headers["X-Signature-Ed25519"]
