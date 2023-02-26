@@ -33,10 +33,11 @@ def get_agentTips(key):
     mycursor.execute('SELECT * FROM AgentTips')
     result = mycursor.fetchall()
     #print(result[0]['Tips'])
-    hashmap1 = {0:'jett', 1:'breach', 2:'brimstone', 3:'chamber', 4:'cypher', 5:'jett', 6:'KAY/O', 7:'killjoy', 8:'neon', 9:'omen', 10:'phoenix', 11:'raze', 12:'reyna', 13:'sage', 14:'skye', 15:'sova', 16:'viper', 17:'yoru', 18:'harbour', 19:'fade'}
+    hashmap1 = {0:'astra', 1:'breach', 2:'brimstone', 3:'chamber', 4:'cypher', 5:'jett', 6:'KAY/O', 7:'killjoy', 8:'neon', 9:'omen', 10:'phoenix', 11:'raze', 12:'reyna', 13:'sage', 14:'skye', 15:'sova', 16:'viper', 17:'yoru', 18:'harbour', 19:'fade'}
 
     for i in result:
         hashmap[hashmap1[i['Idx']]] = i['Tips']
+    print(key)
     return(hashmap[key])
     #print(hashmap)
 
@@ -83,12 +84,12 @@ def handle_discord():
 
     #print(request.data)
     req_data = json.loads(request.data.decode('utf-8'))
-    print(req_data)
+    #print(req_data)
     slash_command = req_data["data"]["name"]
     
     #extract map_breeze from data
     
-    print(slash_command)
+    #print(slash_command)
     
     if slash_command == "stratroulette":
         return {
