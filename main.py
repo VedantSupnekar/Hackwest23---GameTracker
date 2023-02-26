@@ -43,9 +43,6 @@ def get_agentTips(key):
     #print(hashmap)
 
 
-
-
-
 @app.route('/maptips', methods=['POST'])
 def get_MapTips(key): #Suchith
     connection = get_connection()
@@ -59,6 +56,19 @@ def get_MapTips(key): #Suchith
     for i in result:
         hashmap_MapTips[hashmap2[i['Idx']]] = i['Tips']
     return(hashmap_MapTips[key])
+
+@app.route('/shootingtips', methods=['POST'])
+def shootingtips(key):
+    hashmap_headshots = {}
+    connection = get_connection()
+    mycursor = connection.cursor()
+    mycursor.execute('SELECT * FROM HeadshotImprovement')
+    result = mycursor.fetchall()
+    #print(result[0]['Tips'])
+    hashmap2 = {0: 'Iron/bronze', 1: 'Silver/gold/plat', 2: 'Diamond/ascendant', 3: 'Immortal/radiant'}
+    for i in result:
+        hashmap_headshots[hashmap2[i['Idx']]] = i['Tips']
+    return(hashmap_headshots[key])
 
 @app.route('/discord', methods=['POST','GET'])
 def handle_discord():
@@ -122,6 +132,15 @@ def handle_discord():
         'type': 4,
         'data': {
             'content': get_agentTips(givenagent)
+        }
+    }
+    
+    if slash_command == "shootingtips":
+        givenmap = req_data['data']['options'][0]['value']
+        return {
+        'type': 4,
+        'data': {
+            'content': shootingtips(givenmap)
         }
     }
     else:
