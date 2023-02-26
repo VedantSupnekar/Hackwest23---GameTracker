@@ -27,24 +27,7 @@ def get_random_agent():
 
 @app.route('/maptips', methods=['POST'])
 def get_map_tips(): #ChatGPT
-    map_option = request.json['data'][0]['options'][0]['value']
-    map_name = map_option.replace('map_', '')
-    
-    print(map_option)
-    
-    connection = get_connection()
-    mycursor = connection.cursor()
-    sql = 'SELECT Tips FROM MapTips WHERE MapName = %s'
-    val = (map_name,)
-    mycursor.execute(sql, val)
-    result = mycursor.fetchone()
-    connection.close()
-
-    if result is not None:
-        #return result['Tips']
-        return "Kind of successful"
-    else:
-        return f"No tips found for {map_name}."
+   print("hello")
 
 '''
 @app.route('/maptips', methods=['POST'])
@@ -83,8 +66,9 @@ def handle_discord():
             "type": 1
         })
 
-    print(request.data)
+    #print(request.data)
     req_data = json.loads(request.data.decode('utf-8'))
+    print(req_data)
     slash_command = req_data["data"]["name"]
     print(slash_command)
     
