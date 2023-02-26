@@ -37,7 +37,7 @@ def get_agentTips(key):
 
     for i in result:
         hashmap[hashmap1[i['Idx']]] = i['Tips']
-    print(hashmap[key])
+    return(hashmap[key])
     #print(hashmap)
 
 
